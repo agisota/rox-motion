@@ -1,0 +1,69 @@
+/* ============================================================
+   ROX UI — Glass & elevation utilities (v0.3 polish layer)
+   Translucent, blurred surfaces with layered light edges, plus a
+   type-scale utility set. Pairs with the tokens in tokens.css.
+   Opt-in: add a class; nothing here changes existing components by default.
+   ============================================================ */
+
+/* ---- glass surfaces ---- */
+.sf-glass {
+  background: var(--sf-glass-bg);
+  -webkit-backdrop-filter: blur(var(--sf-glass-blur)) saturate(1.25);
+  backdrop-filter: blur(var(--sf-glass-blur)) saturate(1.25);
+  border: 1px solid var(--sf-glass-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--sf-glass-highlight),  /* top light edge */
+    var(--sf-glass-shadow);
+  border-radius: var(--sf-r-lg);
+}
+.sf-glass--strong {
+  background: var(--sf-glass-bg-strong);
+  -webkit-backdrop-filter: blur(var(--sf-glass-blur-lg)) saturate(1.3);
+  backdrop-filter: blur(var(--sf-glass-blur-lg)) saturate(1.3);
+}
+.sf-glass--faint { background: var(--sf-glass-bg-faint); }
+
+/* semantic tint over the glass (subtle) */
+.sf-glass--target     { background: linear-gradient(180deg, var(--sf-glass-target), transparent 70%), var(--sf-glass-bg); }
+.sf-glass--transition { background: linear-gradient(180deg, var(--sf-glass-transition), transparent 70%), var(--sf-glass-bg); }
+.sf-glass--runtime    { background: linear-gradient(180deg, var(--sf-glass-runtime), transparent 70%), var(--sf-glass-bg); }
+
+/* hairline gradient ring (premium edge) — use as a wrapper */
+.sf-ring {
+  position: relative;
+  border-radius: inherit;
+}
+.sf-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, var(--sf-glass-highlight), transparent 40%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* graceful fallback where backdrop-filter is unsupported */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .sf-glass, .sf-glass--strong, .sf-glass--faint { background: var(--sf-panel); }
+}
+
+/* ---- type-scale utilities ---- */
+.sf-t-2xs  { font-size: var(--sf-text-2xs); }
+.sf-t-xs   { font-size: var(--sf-text-xs); }
+.sf-t-sm   { font-size: var(--sf-text-sm); }
+.sf-t-base { font-size: var(--sf-text-base); }
+.sf-t-md   { font-size: var(--sf-text-md); }
+.sf-t-lg   { font-size: var(--sf-text-lg); }
+.sf-t-xl   { font-size: var(--sf-text-xl); line-height: var(--sf-leading-snug); }
+.sf-t-2xl  { font-size: var(--sf-text-2xl); line-height: var(--sf-leading-snug); letter-spacing: var(--sf-tracking-snug); }
+.sf-t-3xl  { font-size: var(--sf-text-3xl); line-height: var(--sf-leading-tight); letter-spacing: var(--sf-tracking-snug); }
+.sf-t-4xl  { font-size: var(--sf-text-4xl); line-height: var(--sf-leading-tight); letter-spacing: var(--sf-tracking-tight); }
+.sf-t-5xl  { font-size: var(--sf-text-5xl); line-height: var(--sf-leading-tight); letter-spacing: var(--sf-tracking-tight); }
+
+.sf-caps { text-transform: uppercase; letter-spacing: var(--sf-tracking-caps); font-family: var(--sf-font-mono); }
+.sf-tabular { font-variant-numeric: tabular-nums; }

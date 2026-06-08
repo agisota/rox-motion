@@ -1,0 +1,169 @@
+/* ============================================================
+   STATE-FIRST KIT — Design Tokens
+   Drop this file anywhere that loads global CSS.
+   All var(--sf-*) names are stable — never change them between versions.
+   This file also pulls in the component styles, so one import is enough:
+       @import "rox-ui/tokens.css";
+   ============================================================ */
+@import "./components.css";
+@import "./scenes.css";
+@import "./elevation.css";
+
+:root {
+  /* ── Semantic palette ── */
+  --sf-bg:          #0A0D0E;
+  --sf-panel:       #121819;
+  --sf-panel-2:     #161D1F;
+  --sf-panel-3:     #1B2426;
+  --sf-hair:        #243032;
+  --sf-hair-soft:   #1A2325;
+
+  --sf-ink:         #D7E2E0;
+  --sf-ink-dim:     #8B9B98;
+  --sf-ink-faint:   #54625F;
+
+  /* Semantic colors — meanings are LAW, not suggestions */
+  --sf-target:      #7DFF9E;   /* S* · verified · WHAT · never pulses */
+  --sf-transition:  #FF7A2B;   /* active transition · event energy · may pulse */
+  --sf-runtime:     #6FB8C9;   /* runtime · environment · structural */
+  --sf-friction:    #5D6A68;   /* how-first · rework · ambiguity */
+  --sf-warning:     #FFB15E;   /* missing monad · validator fail */
+
+  /* Glow variants (rgba for compositing) */
+  --sf-target-glow:     rgba(125, 255, 158, 0.16);
+  --sf-transition-glow: rgba(255, 122, 43, 0.18);
+  --sf-runtime-glow:    rgba(111, 184, 201, 0.14);
+
+  /* ── Typography ── (driven by font theme, see providers/) */
+  --sf-font-display: 'Victor Mono', monospace;
+  --sf-font-body:    'Victor Mono', monospace;
+  --sf-font-mono:    'Victor Mono', monospace;
+
+  --sf-display-tracking:   -0.01em;
+  --sf-display-weight:      600;
+  --sf-display-transform:   none;
+  --sf-display-leading:     1.02;
+
+  /* ── Geometry ── */
+  --sf-r-sm:   6px;
+  --sf-r-md:   10px;
+  --sf-r-lg:   16px;
+  --sf-r-xl:   22px;
+  --sf-maxw:   1240px;
+  --sf-nav-h:  60px;
+
+  /* ── Easing ── */
+  --sf-ease:   cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Modular type scale (1.20 minor third) ──
+     Use these instead of ad-hoc px so sizes stay harmonious. */
+  --sf-text-2xs: 10px;
+  --sf-text-xs:  11.5px;
+  --sf-text-sm:  13px;
+  --sf-text-base:15px;
+  --sf-text-md:  17px;
+  --sf-text-lg:  20px;
+  --sf-text-xl:  clamp(22px, 2.4vw, 26px);
+  --sf-text-2xl: clamp(26px, 3.2vw, 34px);
+  --sf-text-3xl: clamp(30px, 4vw, 46px);
+  --sf-text-4xl: clamp(38px, 5.4vw, 64px);
+  --sf-text-5xl: clamp(46px, 6.4vw, 84px);
+
+  --sf-tracking-tight: -0.02em;
+  --sf-tracking-snug:  -0.01em;
+  --sf-tracking-wide:   0.04em;
+  --sf-tracking-caps:   0.16em;   /* uppercase mono labels */
+
+  --sf-leading-tight: 1.05;
+  --sf-leading-snug:  1.25;
+  --sf-leading-body:  1.6;
+
+  /* ── Glass / translucency system ──
+     Layered surfaces: translucent fill + blur + top highlight + hairline. */
+  --sf-glass-bg:        rgba(18, 24, 25, 0.55);
+  --sf-glass-bg-strong: rgba(18, 24, 25, 0.72);
+  --sf-glass-bg-faint:  rgba(18, 24, 25, 0.34);
+  --sf-glass-border:    rgba(215, 226, 224, 0.10);
+  --sf-glass-highlight: rgba(215, 226, 224, 0.14);   /* inset top edge */
+  --sf-glass-blur:      14px;
+  --sf-glass-blur-lg:   22px;
+  --sf-glass-shadow:    0 18px 50px -18px rgba(0, 0, 0, 0.65);
+
+  /* tinted glass (semantic) */
+  --sf-glass-target:    rgba(125, 255, 158, 0.07);
+  --sf-glass-transition:rgba(255, 122, 43, 0.07);
+  --sf-glass-runtime:   rgba(111, 184, 201, 0.07);
+}
+
+/* ── Font themes ── */
+[data-sf-font="victor"],
+:root {
+  --sf-font-display: 'Victor Mono', monospace;
+  --sf-font-body:    'Victor Mono', monospace;
+  --sf-font-mono:    'Victor Mono', monospace;
+  --sf-display-tracking: -0.005em;
+  --sf-display-weight:   600;
+  --sf-display-transform: none;
+  --sf-display-leading:   1.05;
+}
+
+[data-sf-font="bebas"] {
+  --sf-font-display: 'Bebas Neue', sans-serif;
+  --sf-font-body:    'Lekton', monospace;
+  --sf-font-mono:    'Victor Mono', monospace;
+  --sf-display-tracking:   0.01em;
+  --sf-display-weight:     400;
+  --sf-display-transform:  uppercase;
+  --sf-display-leading:    1.0;
+}
+
+[data-sf-font="lekton"] {
+  --sf-font-display: 'Lekton', monospace;
+  --sf-font-body:    'Lekton', monospace;
+  --sf-font-mono:    'Victor Mono', monospace;
+  --sf-display-tracking:   0em;
+  --sf-display-weight:     700;
+  --sf-display-transform:  none;
+  --sf-display-leading:    1.08;
+}
+
+/* ── Blueprint grid backdrop (apply to body or layout wrapper) ── */
+.sf-blueprint-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--sf-hair-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sf-hair-soft) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, #000 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Harness hatch (grey diagonal = how-first noise, never bright) ── */
+.sf-harness-bg {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(93, 106, 104, 0.06) 0,
+    rgba(93, 106, 104, 0.06) 1px,
+    transparent 1px,
+    transparent 9px
+  );
+}
+
+/* ── Utility classes ── */
+.sf-display {
+  font-family: var(--sf-font-display);
+  font-weight: var(--sf-display-weight);
+  letter-spacing: var(--sf-display-tracking);
+  text-transform: var(--sf-display-transform);
+  line-height: var(--sf-display-leading);
+}
+.sf-mono { font-family: var(--sf-font-mono); }
+
+/* ── Reduced motion safety ── */
+@media (prefers-reduced-motion: reduce) {
+  .sf-motion-safe { animation: none !important; transition: none !important; }
+}

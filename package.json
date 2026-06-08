@@ -1,0 +1,49 @@
+{
+  "name": "rox-ui",
+  "version": "0.3.0",
+  "description": "Rox UI — a State-First / Transition-First motion + component design system for React. Semantic ontology of work (state, transition, event, runtime, monad, trace, validator), glass surfaces, 50 scenes, Motion-only.",
+  "license": "MIT",
+  "author": "scharlesky",
+  "homepage": "https://github.com/scharlesky/rox-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scharlesky/rox-ui.git"
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "ui",
+    "motion",
+    "framer-motion",
+    "state-first",
+    "glassmorphism",
+    "dark-ui",
+    "components"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./tokens.css": "./src/tokens/tokens.css"
+  },
+  "files": ["src", "README.md", "PRD.md", "BRAINSTORM.md", "LICENSE"],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "motion": ">=11"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}

@@ -1,0 +1,56 @@
+/* ============================================================
+   STATE-FIRST KIT — scene layout helpers
+   Generic, reusable layout classes for the 50 scenes. Imported by tokens.css.
+   Semantic color stays in components.css / tokens.css.
+   ============================================================ */
+
+.sf-box { border: 1px solid var(--sf-hair); border-radius: var(--sf-r-lg); background: var(--sf-panel); padding: 22px; }
+.sf-box--xl { border-radius: var(--sf-r-xl); padding: 30px 26px; }
+
+.sf-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.sf-g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.sf-g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 860px) { .sf-g2, .sf-g3, .sf-g4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .sf-g2, .sf-g3, .sf-g4 { grid-template-columns: 1fr; } }
+
+.sf-row { display: flex; align-items: center; gap: 10px; }
+.sf-col { display: flex; flex-direction: column; gap: 10px; }
+.sf-mono-xs { font-family: var(--sf-font-mono); font-size: 11px; color: var(--sf-ink-dim); }
+.sf-mono-k { font-family: var(--sf-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sf-ink-faint); }
+
+/* small labelled metric */
+.sf-metric { border: 1px solid var(--sf-hair); border-radius: var(--sf-r-md); background: var(--sf-panel-2); padding: 14px 16px; }
+.sf-metric__k { font-family: var(--sf-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sf-ink-faint); }
+.sf-metric__v { font-family: var(--sf-font-display); font-size: clamp(22px, 3vw, 34px); color: var(--sf-ink); margin-top: 6px; }
+.sf-metric__v.is-target { color: var(--sf-target); }
+.sf-metric__v.is-transition { color: var(--sf-transition); }
+.sf-metric__v.is-runtime { color: var(--sf-runtime); }
+
+/* generic pill / chip */
+.sf-pill { font-family: var(--sf-font-mono); font-size: 11px; color: var(--sf-ink-dim); border: 1px solid var(--sf-hair);
+  border-radius: 999px; padding: 5px 11px; background: var(--sf-panel-2); display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.sf-pill .sf-d { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+
+/* generic node box (for graphs/trees) */
+.sf-gnode { font-family: var(--sf-font-mono); font-size: 12px; border: 1px solid var(--sf-hair); border-radius: var(--sf-r-sm);
+  padding: 9px 13px; background: var(--sf-panel-2); color: var(--sf-ink-dim); display: inline-flex; align-items: center; gap: 8px; }
+.sf-gnode.is-s0 { border-color: rgba(255,122,43,0.28); color: var(--sf-transition); }
+.sf-gnode.is-star { border-color: rgba(125,255,158,0.3); color: var(--sf-target); }
+.sf-gnode.is-rt { border-color: rgba(111,184,201,0.28); color: var(--sf-runtime); }
+
+/* mini console (logs) */
+.sf-mini-console { font-family: var(--sf-font-mono); font-size: 11.5px; line-height: 1.8; background: #070a0b;
+  border: 1px solid var(--sf-hair); border-radius: var(--sf-r-md); padding: 14px; color: var(--sf-ink-dim); }
+
+/* desktop window frame */
+.sf-winframe { border: 1px solid var(--sf-hair); border-radius: var(--sf-r-md); background: var(--sf-panel); overflow: hidden; }
+.sf-winframe__bar { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--sf-hair); background: var(--sf-panel-2); }
+.sf-winframe__dots { display: flex; gap: 6px; }
+.sf-winframe__dots i { width: 10px; height: 10px; border-radius: 50%; }
+.sf-winframe__title { font-family: var(--sf-font-mono); font-size: 11px; color: var(--sf-ink-dim); }
+.sf-winframe__body { padding: 14px; }
+
+/* slider track */
+.sf-track { height: 6px; border-radius: 999px; background: var(--sf-panel-3); position: relative; }
+.sf-track__fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--sf-transition), var(--sf-target)); }
+.sf-track__knob { position: absolute; top: 50%; width: 16px; height: 16px; border-radius: 50%; background: var(--sf-ink); transform: translate(-50%, -50%); cursor: grab; }
