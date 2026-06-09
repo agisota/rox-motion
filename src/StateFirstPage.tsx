@@ -24,8 +24,13 @@ import { motion, useInView } from "motion/react";
 
 import { MotionProvider } from "./providers/MotionProvider";
 import { FontThemeProvider } from "./providers/FontThemeProvider";
+import { ColorThemeProvider } from "./providers/ColorThemeProvider";
 import { FontThemeSwitch } from "./primitives/FontThemeSwitch";
+import { ColorThemeSwitch } from "./primitives/ColorThemeSwitch";
 import { MotionControl } from "./primitives/MotionControl";
+import { SoundToggle } from "./primitives/SoundToggle";
+import { ScrollProgress } from "./primitives/ScrollProgress";
+import { ScrollSignal } from "./primitives/ScrollSignal";
 import { TransitionRail } from "./primitives/TransitionRail";
 import { MonadCapsule } from "./primitives/MonadCapsule";
 import { TraceConsole, DEMO_TRACE } from "./primitives/TraceConsole";
@@ -33,9 +38,13 @@ import { TraceConsole, DEMO_TRACE } from "./primitives/TraceConsole";
 import { fadeUp, staggerContainer } from "./tokens/motion-variants";
 import { stateFirstScenes, SCENE_CLUSTERS, type SceneCluster } from "./data/scenes";
 import { sceneRegistry } from "./scene-registry";
+import { useActiveSection } from "./hooks/useActiveSection";
 
 /* ───────────────────────── nav ───────────────────────── */
+const CLUSTER_IDS = SCENE_CLUSTERS.map((c) => `cluster-${c.id}`);
+
 function Nav() {
+  const active = useActiveSection(CLUSTER_IDS);
   return (
     <nav className="sf-nav">
       <a className="sf-nav__brand" href="#top">
@@ -50,14 +59,24 @@ function Nav() {
         <span>state‑first <b>/ set</b></span>
       </a>
       <div className="sf-nav__links">
-        {SCENE_CLUSTERS.map((c) => (
-          <a key={c.id} className="sf-nav__link" href={`#cluster-${c.id}`}>
-            {c.label}
-          </a>
-        ))}
+        {SCENE_CLUSTERS.map((c) => {
+          const id = `cluster-${c.id}`;
+          return (
+            <a
+              key={c.id}
+              className={`sf-nav__link${active === id ? " is-active" : ""}`}
+              href={`#${id}`}
+              aria-current={active === id ? "true" : undefined}
+            >
+              {c.label}
+            </a>
+          );
+        })}
       </div>
       <div className="sf-nav__spacer" />
+      <SoundToggle />
       <MotionControl />
+      <ColorThemeSwitch />
       <FontThemeSwitch />
       <a className="sf-nav__cta" href="https://github.com/agisota/set" target="_blank" rel="noopener noreferrer">
         github.com/agisota/set
@@ -239,6 +258,8 @@ export function StateFirstPage({ withProviders = true }: { withProviders?: boole
   const body = (
     <div className="sf-blueprint-bg" style={{ background: "var(--sf-bg)", color: "var(--sf-ink)", minHeight: "100vh" }}>
       <Nav />
+      <ScrollProgress />
+      <ScrollSignal />
       <main style={{ position: "relative", zIndex: 1 }}>
         <Hero />
         {SCENE_CLUSTERS.map((c) => (
@@ -251,8 +272,10 @@ export function StateFirstPage({ withProviders = true }: { withProviders?: boole
 
   if (!withProviders) return body;
   return (
-    <MotionProvider defaultLevel="full">
-      <FontThemeProvider defaultTheme="victor">{body}</FontThemeProvider>
-    </MotionProvider>
+    <ColorThemeProvider defaultTheme="dark">
+      <MotionProvider defaultLevel="full">
+        <FontThemeProvider defaultTheme="victor">{body}</FontThemeProvider>
+      </MotionProvider>
+    </ColorThemeProvider>
   );
 }

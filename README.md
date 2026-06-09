@@ -1,8 +1,12 @@
-# rox-ui
+# Rox UI
 
-The **State-First** visual system as a reusable React + TypeScript + Motion library — tokens, providers, primitives, and composite scenes. Built from the `State-First.html` design reference for [`agisota/set`](https://github.com/agisota/set) (landing + desktop).
+> A **State-First / Transition-First** motion + component design system for React. The visual language *is* the mental model: `state · transition · event · runtime · monad · trace · validator · agent`. Dark graphite blueprint, glass surfaces, semantic color as law. Built from the `State-First.html` reference for [`agisota/set`](https://github.com/agisota/set) (landing + desktop).
 
-Status: **all 50 scenes built · typecheck clean · 19 tests passing** (`tsc --noEmit`, `vitest run` — incl. a test that mounts the entire page).
+Status (v0.5): **all 50 scenes · glass surfaces · light/dark/high-contrast themes · scroll choreography · cva variant API · opt-in sound · typecheck clean · 30 tests passing** (incl. axe a11y + a test that mounts the entire page).
+
+**Themes:** `<ColorThemeProvider>` + `<ColorThemeSwitch/>` (dark / light / high-contrast). **Fonts:** Victor Mono / Bebas Neue / Lekton. **Motion:** Full / Essential / Off. **Sound:** opt-in WebAudio ticks (off by default). **Scroll:** `<ScrollProgress/>` + `<ScrollSignal/>` + magnetic active nav. **Variants:** `<Surface>` / `<Button>` (cva). **Catalog:** Ladle stories. **Quality:** axe test + Playwright visual + ESLint/Prettier + GitHub Actions scaffolds.
+
+**Docs:** [`PRD.md`](./PRD.md) · [`BRAINSTORM.md`](./BRAINSTORM.md) (all 20 improvements, now landed).
 
 ## Install
 

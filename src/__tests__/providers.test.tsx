@@ -4,6 +4,7 @@ import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 afterEach(cleanup);
 import { FontThemeProvider, useFontTheme } from "../providers/FontThemeProvider";
 import { MotionProvider, useMotionLevel } from "../providers/MotionProvider";
+import { ColorThemeProvider, useColorTheme } from "../providers/ColorThemeProvider";
 
 function FontProbe() {
   const { theme, setTheme } = useFontTheme();
@@ -55,6 +56,44 @@ describe("FontThemeProvider", () => {
       </FontThemeProvider>
     );
     expect(screen.getByTestId("font").textContent).toBe("bebas");
+  });
+});
+
+function ColorProbe() {
+  const { theme, setTheme } = useColorTheme();
+  return (
+    <div>
+      <span data-testid="theme">{theme}</span>
+      <button onClick={() => setTheme("light")}>light</button>
+      <button onClick={() => setTheme("hc")}>hc</button>
+    </div>
+  );
+}
+
+describe("ColorThemeProvider", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("defaults to dark and reflects on <html>", () => {
+    render(
+      <ColorThemeProvider>
+        <ColorProbe />
+      </ColorThemeProvider>
+    );
+    expect(screen.getByTestId("theme").textContent).toBe("dark");
+    expect(document.documentElement.getAttribute("data-sf-theme")).toBe("dark");
+  });
+
+  it("switches and persists light / high-contrast", () => {
+    render(
+      <ColorThemeProvider>
+        <ColorProbe />
+      </ColorThemeProvider>
+    );
+    fireEvent.click(screen.getByText("light"));
+    expect(localStorage.getItem("sf-theme")).toBe("light");
+    expect(document.documentElement.getAttribute("data-sf-theme")).toBe("light");
+    fireEvent.click(screen.getByText("hc"));
+    expect(document.documentElement.getAttribute("data-sf-theme")).toBe("hc");
   });
 });
 

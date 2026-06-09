@@ -15,6 +15,8 @@ export * from "./tokens/motion-variants";
 
 // ── Providers ──
 export { FontThemeProvider, useFontTheme } from "./providers/FontThemeProvider";
+export { ColorThemeProvider, useColorTheme } from "./providers/ColorThemeProvider";
+export type { SfColorTheme } from "./providers/ColorThemeProvider";
 export {
   MotionProvider, useMotionLevel, useLoopsAllowed, useAnyMotion,
 } from "./providers/MotionProvider";
@@ -22,6 +24,16 @@ export type { MotionLevel } from "./providers/MotionProvider";
 
 // ── Hooks ──
 export { usePointerGlow } from "./hooks/usePointerGlow";
+export { useActiveSection } from "./hooks/useActiveSection";
+export { useStateSound } from "./hooks/useStateSound";
+export type { StateSound } from "./hooks/useStateSound";
+
+// ── Variant primitives (cva) ──
+export { Surface, surfaceVariants } from "./primitives/Surface";
+export type { SurfaceProps } from "./primitives/Surface";
+export { Button, buttonVariants } from "./primitives/Button";
+export type { ButtonProps } from "./primitives/Button";
+export { cn } from "./lib/cn";
 
 // ── Primitives ──
 export { StateCard } from "./primitives/StateCard";
@@ -31,7 +43,11 @@ export { MonadCapsule } from "./primitives/MonadCapsule";
 export { RunButton } from "./primitives/RunButton";
 export type { RunPhase } from "./primitives/RunButton";
 export { FontThemeSwitch } from "./primitives/FontThemeSwitch";
+export { ColorThemeSwitch } from "./primitives/ColorThemeSwitch";
 export { MotionControl } from "./primitives/MotionControl";
+export { SoundToggle } from "./primitives/SoundToggle";
+export { ScrollProgress } from "./primitives/ScrollProgress";
+export { ScrollSignal } from "./primitives/ScrollSignal";
 export { WorkspaceStateCard } from "./primitives/WorkspaceStateCard";
 export { TraceConsole, DEMO_TRACE } from "./primitives/TraceConsole";
 export type { TraceEntry, TraceEntryKind } from "./primitives/TraceConsole";

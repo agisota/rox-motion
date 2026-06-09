@@ -131,9 +131,21 @@ The north star: a **futuristic operating-system-for-work** aesthetic — translu
 **#2 light edges (`.sf-elev-1..3`) · #3 lit-edge ring on hero stage + filled buttons · #5 film grain on tinted panels (reduced-data aware) · #8 tabular numerals on all metrics/timestamps · #10 reading measure (`--sf-measure`) + balanced headlines · #13 scoped `:focus-visible` ring (`--sf-focus`) · #17 `--rox-*` token aliases + `roxColors`/`roxSpring`/`roxEase` exports.**
 Shipped as a single low-risk CSS/token pass; build stayed green (`tsc` clean, 20 tests).
 
-## Bigger bets (schedule deliberately)
-**#12 light/HC themes · #14 shared-element choreography · #18 cva variant API · #19 a11y+visual CI.**
-These define v0.4–v1.0 and need their own verification gates.
+## Bigger bets ✅ ALL LANDED in v0.5
+- **#9** container-query utilities (`.sf-cq`, `.sf-cq-title`) ✅
+- **#11** semantic glow-on-hover (`.sf-glow-target/transition/runtime`) ✅
+- **#12** light + high-contrast themes (`ColorThemeProvider` / `ColorThemeSwitch`, `data-sf-theme`) ✅ + test
+- **#14** scroll "signal thread" (`ScrollSignal`) tying sections together ✅
+- **#15** scroll-progress bar (`ScrollProgress`) + magnetic active nav (`useActiveSection`) ✅
+- **#16** opt-in WebAudio state sounds (`useStateSound` / `SoundToggle`, off by default, reduced-motion safe) ✅ + test
+- **#18** cva variant API: `<Surface>` + `<Button>` with tone/variant/density/size ✅ + test
+- **#19** axe a11y test (0 violations) ✅ + Playwright visual config/spec, ESLint/Prettier config, GitHub Actions CI 🧪 (scaffolded; deps install in CI)
+- **#20** Ladle catalog config + provider + stories for primitives & marquee scenes 🧪 (scaffolded)
+
+Build stayed green throughout: `tsc` clean (incl. stories), **30 tests** (incl. axe + full-page mount).
+
+## What's left for v1.0
+Wire the scaffolded gates into CI with their deps installed (Playwright browsers, Ladle preview), capture baseline screenshots, then enforce. Optional polish: noise/grain on more surfaces (#5 broaden), sound on real RunButton/validator events (#16 deepen), light-mode contrast audit.
 
 ---
 

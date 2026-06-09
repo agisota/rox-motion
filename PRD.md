@@ -3,8 +3,8 @@
 **Project:** Rox UI (formerly `state-first-kit`)
 **Type:** State-First / Transition-First motion + component design system for React
 **Owner:** scharlesky@gmail.com
-**Status:** v0.4 (50 scenes; glass + type-scale + quick-win polish landed) → roadmap to v1.0
-**Verification baseline:** `tsc --noEmit` clean · 20 tests passing (incl. full-page mount)
+**Status:** v0.5 (all 20 brainstorm improvements landed: glass, type-scale, light/HC themes, scroll choreography, cva variants, sound, a11y test; CI/visual/Ladle scaffolded) → hardening to v1.0
+**Verification baseline:** `tsc --noEmit` clean · 30 tests passing (incl. axe a11y + full-page mount)
 
 ---
 
@@ -106,9 +106,8 @@ Rox UI should feel like a **futuristic operating system for work**: dark graphit
 |---|---|---|
 | **v0.3** (now) | Surface quality | glass tokens+utilities, modular type scale, applied to nav/stage/cards |
 | **v0.4** (now) | Brand + polish | ✅ `--rox-*`/`roxColors` aliases, focus-ring token, lit edges, grain, tabular nums, reading measure · (next: light + high-contrast modes, ESLint/Prettier) |
-| **v0.5** | A11y + perf | axe gate, keyboard pass, `content-visibility`, reduced-data, per-scene static fallbacks |
-| **v0.9** | DX | per-component exports, size-limit, Storybook/Ladle, `copy import` everywhere, MDX docs |
-| **v1.0** | Hardening | visual-regression CI, full token docs, semantic-color lint rule, migration guide |
+| **v0.5** (now) | Everything else | ✅ light/HC themes, scroll progress+signal+active-nav, cva `Surface`/`Button`, semantic glow, container queries, opt-in sound, axe a11y test, Ladle catalog, Playwright/ESLint/CI scaffolds |
+| **v1.0** | Hardening | turn on visual-regression CI (install Playwright + baselines), enforce ESLint, full token docs, semantic-color lint rule, migration guide |
 
 ---
 

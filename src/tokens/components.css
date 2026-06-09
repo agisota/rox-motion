@@ -477,3 +477,7 @@
 /* balanced headline wrapping (no orphans) */
 .sf-hero__title, .sf-title, .sf-foot__manifesto, .sf-formula__line { text-wrap: balance; }
 .sf-sub, .sf-hero__sub { text-wrap: pretty; max-width: min(100%, var(--sf-measure)); }
+
+/* active nav link (magnetic highlight) + scroll signal responsive */
+.sf-nav__link.is-active { color: var(--sf-target); background: var(--sf-panel-2); }
+@media (max-width: 900px) { .sf-scroll-signal { display: none; } }

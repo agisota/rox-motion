@@ -8,6 +8,7 @@
 @import "./components.css";
 @import "./scenes.css";
 @import "./elevation.css";
+@import "./variants.css";
 
 :root {
   /* ── Semantic palette ── */
@@ -115,6 +116,73 @@
   --rox-glass-bg: var(--sf-glass-bg);
   --rox-glass-border: var(--sf-glass-border);
   --rox-focus: var(--sf-focus);
+}
+
+/* ============================================================
+   COLOR THEMES — set data-sf-theme on <html> (ColorThemeProvider)
+   default (dark) lives in :root above. light + high-contrast below.
+   ============================================================ */
+
+/* ── Light ── */
+[data-sf-theme="light"] {
+  --sf-bg:        #F3F6F5;
+  --sf-panel:     #FFFFFF;
+  --sf-panel-2:   #F0F4F3;
+  --sf-panel-3:   #E7ECEB;
+  --sf-hair:      #D6DEDC;
+  --sf-hair-soft: #E9EFEE;
+
+  --sf-ink:       #16201F;
+  --sf-ink-dim:   #46524F;
+  --sf-ink-faint: #79857F;
+
+  /* darkened semantic hues for AA contrast on light surfaces */
+  --sf-target:    #0E9F57;
+  --sf-transition:#D85A14;
+  --sf-runtime:   #2A7C8F;
+  --sf-friction:  #6B7775;
+  --sf-warning:   #9A6711;
+
+  --sf-target-glow:     rgba(14, 159, 87, 0.18);
+  --sf-transition-glow: rgba(216, 90, 20, 0.18);
+  --sf-runtime-glow:    rgba(42, 124, 143, 0.16);
+
+  --sf-glass-bg:        rgba(255, 255, 255, 0.62);
+  --sf-glass-bg-strong: rgba(255, 255, 255, 0.80);
+  --sf-glass-bg-faint:  rgba(255, 255, 255, 0.40);
+  --sf-glass-border:    rgba(22, 32, 31, 0.10);
+  --sf-glass-highlight: rgba(255, 255, 255, 0.80);
+  --sf-glass-shadow:    0 18px 50px -18px rgba(22, 32, 31, 0.22);
+
+  --sf-focus: #2A7C8F;
+}
+
+/* ── High contrast (dark base, maximal separation) ── */
+[data-sf-theme="hc"] {
+  --sf-bg:        #000000;
+  --sf-panel:     #0A0E0F;
+  --sf-panel-2:   #111719;
+  --sf-panel-3:   #182022;
+  --sf-hair:      #6A7B78;
+  --sf-hair-soft: #3A4644;
+
+  --sf-ink:       #FFFFFF;
+  --sf-ink-dim:   #DCE6E4;
+  --sf-ink-faint: #AEBCB9;
+
+  --sf-target:    #8CFFB2;
+  --sf-transition:#FF9248;
+  --sf-runtime:   #93D8EA;
+  --sf-friction:  #9AA6A4;
+  --sf-warning:   #FFC773;
+
+  --sf-glass-bg:        rgba(10, 14, 15, 0.86);
+  --sf-glass-bg-strong: rgba(10, 14, 15, 0.94);
+  --sf-glass-border:    rgba(220, 230, 228, 0.28);
+  --sf-glass-highlight: rgba(220, 230, 228, 0.30);
+
+  --sf-focus: #93D8EA;
+  --sf-focus-w: 3px;
 }
 
 /* ── Font themes ── */
