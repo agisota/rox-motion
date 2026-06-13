@@ -4,10 +4,10 @@
   "description": "Rox UI — a State-First / Transition-First motion + component design system for React. Semantic ontology of work (state, transition, event, runtime, monad, trace, validator), glass surfaces, light/dark/high-contrast themes, 50 scenes, Motion-only.",
   "license": "MIT",
   "author": "scharlesky",
-  "homepage": "https://github.com/scharlesky/rox-ui",
+  "homepage": "https://github.com/agisota/rox-motion",
   "repository": {
     "type": "git",
-    "url": "https://github.com/scharlesky/rox-ui.git"
+    "url": "https://github.com/agisota/rox-motion.git"
   },
   "keywords": [
     "react",
